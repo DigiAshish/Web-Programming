@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+	<head>
+		<title>
+			Ashish's XML Parser
+		</title>
+		<script type="text/javascript">
+		function IsEmpty(){ 
+			if(document.form.uname.value == "")
+				{
+					alert("empty");
+				}
+				return;
+			}
+		</script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+		</script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+		$("#loadBtn").click(function() {
+		$.ajax({
+			type: "GET",
+			url: "Books.xml",
+			datatype: "xml",
+				success: function(xml) {
+				var dataTable = '';
+				dataTable += '<table id="dataTable" cellspacing="0" cellpadding="2" border="1">' ;
+				dataTable += '<thead><td>Title<\/td><td>Author<\/td><td>Year<\/td><td>Price<\/td><\/thead>';
+
+					$(xml).find('book').each(function(){
+					dataTable += '<tr>';
+					dataTable += '<td>';
+					dataTable += $(this).find('title').text();
+					dataTable += '<\/td>';
+
+					dataTable += '<td>';
+					dataTable += $(this).find('author').text();
+					dataTable += '<\/td>';
+					
+					dataTable += '<td>';
+					dataTable += $(this).find('year').text();
+					dataTable += '<\/td>';
+
+					dataTable += '<td>';
+					dataTable += $(this).find('price').text();
+					dataTable += '<\/td>';
+
+				dataTable += '<\/tr>';
+				});
+				dataTable += '<\/table>';
+				$("#data").append(dataTable);
+			}
+		});
+		});
+		});
+		</script>
+	</head>
+	<body>
+		<p>
+			Please click to Display XML Content:
+		</p>
+		<form>
+		    <label><b>Username</b></label>
+			<input type="text" placeholder="Enter Username" name="uname" required/>
+		    <input type="submit" onclick="IsEmpty();" id="loadBtn" value="Load XML"><br>
+		</form>
+		<div id="data"></div>
+	</body>
+</html>
