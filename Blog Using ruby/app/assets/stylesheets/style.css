@@ -1,0 +1,29 @@
+body, td, a { font-family: Papyrus; 
+              background-color: Beige;
+              color: Blue; }
+h2          { font-family: Georgia;
+              font-size: 140%; }
+h3          { font-size: 125%; }
+ol          { list-style-type: upper-roman; }
+ul          { list-style-type: circle; }
+
+td:first-child {
+	padding-left: 16px; min-width: 105px; text-align: left;
+  box-shadow:
+    inset 0px 11px 8px -10px blue,
+    inset 0px -11px 8px -10px blue,
+    inset 11px 0px 8px -10px blue; 
+}
+td {
+	padding-left: 16px; min-width: 105px; text-align: left;
+  box-shadow:
+    inset 0px 11px 8px -10px blue,
+    inset 0px -11px 8px -10px blue;
+}
+td:last-child {
+	padding-left: 16px; min-width: 105px; text-align: left;
+  box-shadow:
+    inset 0px 11px 8px -10px blue,
+    inset 0px -11px 8px -10px blue,
+    inset -11px 0px 8px -10px blue; 
+}
